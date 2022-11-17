@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="keywords">
+
+    <sql id="search">
+        SELECT * FROM keywords
+        <where>
+            <if test="keywordsDomainId > 0">
+                keywords_domain_id = #{keywordsDomainId}
+            </if>
+
+            <if test="search == 1">
+
+            </if>
+        </where>
+    </sql>
+
+    <select id="total" resultType="Integer">
+        SELECT COUNT(*)
+        FROM (<include refid="search"></include>) T1
+    </select>
+
+    <select id="list" resultType="Keywords">
+        SELECT *
+        FROM (<include refid="search"></include>) T1
+        LIMIT #{offset}, #{perPage}
+    </select>
+
+    <insert id="add">
+        INSERT INTO keywords(keywords_name, keywords_domain_id)
+        VALUES (#{keywordsName}, #{keywordsDomainId})
+    </insert>
+
+    <update id="update">
+        UPDATE keywords
+        SET keywords_name = #{keywordsName}
+        WHERE keywords_domain_id = #{keywordsDomainId}
+          AND keywords_id = #{keywordsId}
+    </update>
+
+    <select id="item" resultType="Keywords">
+        SELECT *
+        FROM keywords
+        WHERE keywords_id = #{keywordsId}
+          AND keywords_domain_id = #{keywordsDomainId}
+    </select>
+
+    <delete id="delete">
+        DELETE
+        FROM keywords
+        WHERE keywords_domain_id = #{keywordsDomainId}
+          AND keywords_id = #{keywordsId}
+    </delete>
+
+</mapper>
