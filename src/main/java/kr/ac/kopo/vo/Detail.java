@@ -9,13 +9,15 @@ public abstract class Detail {
     // FK and PK
     private int detailProductId;
 
-    public abstract String get(String Key);
+    private int detailPrice;
+    private int detailSalePrice;
 
-    private String detailCategory;
+    // 추상 클래스
+    public abstract String get(String key);
+
+    /* private String detailCategory;
     private String detailBrand;
     private String detailSize;
     private String detailColor;
-    private int detailPrice;
-    private int detailSalePrice;
-    private String detailContents;
+    private String detailContents; */
 }
