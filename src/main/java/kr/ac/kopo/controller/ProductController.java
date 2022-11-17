@@ -1,7 +1,9 @@
 package kr.ac.kopo.controller;
 
 import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.service.KeywordsService;
 import kr.ac.kopo.service.ProductService;
+import kr.ac.kopo.vo.Keywords;
 import kr.ac.kopo.vo.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+    private final KeywordsService keywordsService;
 
     @GetMapping("list")
     public String list(Model model, Pager pager) {
@@ -30,7 +33,19 @@ public class ProductController {
     }
 
     @GetMapping("/add")
-    public String add() {
+    public String add(Model model) {
+        List<Keywords> detailBrandList = keywordsService.list(2);
+        model.addAttribute("brands", detailBrandList);
+
+        List<Keywords> detailSizeList = keywordsService.list(3);
+        model.addAttribute("sizes", detailSizeList);
+
+        List<Keywords> detailColorList = keywordsService.list(4);
+        model.addAttribute("colors", detailColorList);
+
+        List<Keywords> detailCategoryList = keywordsService.list(5);
+        model.addAttribute("categorys", detailCategoryList);
+
         return "product/add";
     }
 

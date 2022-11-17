@@ -18,4 +18,6 @@ public interface KeywordsDao {
     void add(Keywords keywords);
 
     int total(KeywordsPager pager);
+
+    List<Keywords> list(int keywordsDomainId);
 }

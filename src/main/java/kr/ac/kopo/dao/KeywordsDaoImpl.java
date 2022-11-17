@@ -46,4 +46,9 @@ sql.insert("keywords.add", keywords);
 
         return sql.selectOne("keywords.total", pager);
     }
+
+    @Override
+    public List<Keywords> list(int keywordsDomainId) {
+        return sql.selectList("keywords.list", keywordsDomainId);
+    }
 }

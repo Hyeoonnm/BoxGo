@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface KeywordsService {
     List<Keywords> list(KeywordsPager pager);
-
     void add(Keywords keywords);
 
     void delete(Keywords keywords);
@@ -15,4 +14,6 @@ public interface KeywordsService {
     Keywords item(Keywords keywords);
 
     void update(Keywords keywords);
+
+    List<Keywords> list(int keywordsDomainId);
 }

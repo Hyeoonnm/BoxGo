@@ -42,4 +42,14 @@ public class KeywordsServiceImpl implements KeywordsService {
     public void update(Keywords keywords) {
         keywordsDao.update(keywords);
     }
+
+    @Override
+    public List<Keywords> list(int keywordsDomainId) {
+
+        KeywordsPager pager = new KeywordsPager();
+        pager.setKeywordsDomainId(keywordsDomainId);
+        pager.setPerPage(0);
+
+        return keywordsDao.list(pager);
+    }
 }

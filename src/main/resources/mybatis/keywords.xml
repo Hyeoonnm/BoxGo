@@ -24,7 +24,9 @@
     <select id="list" resultType="Keywords">
         SELECT *
         FROM (<include refid="search"></include>) T1
+        <if test="perPage != 0">
         LIMIT #{offset}, #{perPage}
+        </if>
     </select>
 
     <insert id="add">
