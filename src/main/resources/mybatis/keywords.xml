@@ -4,7 +4,8 @@
 <mapper namespace="keywords">
 
     <sql id="search">
-        SELECT * FROM keywords
+        SELECT keywords.*, domain.domain_name, domain.domain_caption FROM keywords
+        LEFT JOIN domain ON keywords.keywords_domain_id = domain.domain_id
         <where>
             <if test="keywordsDomainId > 0">
                 keywords_domain_id = #{keywordsDomainId}
@@ -14,6 +15,8 @@
 
             </if>
         </where>
+
+        ORDER BY keywords_domain_id
     </sql>
 
     <select id="total" resultType="Integer">

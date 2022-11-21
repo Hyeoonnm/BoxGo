@@ -11,9 +11,11 @@ public class Keywords {
 
     /* Domain FK */
     private int keywordsDomainId;
-
-
     private String keywordsName;
+
+    /* Domain */
+    private String domainName;
+    private String domainCaption;
 
 
     public Keywords() {

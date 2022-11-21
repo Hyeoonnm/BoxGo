@@ -32,6 +32,10 @@
     <insert id="add">
         INSERT INTO product(product_name, product_barcode)
         VALUES (#{productName}, #{productBarcode})
+
+        <selectKey keyProperty="productId" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <update id="update">

@@ -10,6 +10,10 @@
 <html>
 <head>
     <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -42,6 +46,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Caption</th>
             <th scope="col">Control</th>
         </tr>
         </thead>
@@ -50,6 +55,7 @@
             <tr>
                 <th scope="row">${domain.domainId}</th>
                 <td>${domain.domainName}</td>
+                <td>${domain.domainCaption}</td>
                 <td>
                     <a href="/keywords/${domain.domainId}/list">용어관리</a>
                     <a href="update/${domain.domainId}" class="btn btn-sm btn-secondary ms-1">수정</a>

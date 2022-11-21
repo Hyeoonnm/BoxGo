@@ -28,8 +28,8 @@
 
 
     <insert id="add">
-        INSERT INTO domain(domain_name)
-        VALUES (#{domainName})
+        INSERT INTO domain(domain_name, domain_caption)
+        VALUES (#{domainName}, #{domainCaption})
     </insert>
 
     <delete id="delete">
@@ -40,7 +40,8 @@
 
     <update id="update">
         UPDATE domain
-        SET domain_name = #{domainName}
+        SET domain_name = #{domainName},
+            domain_caption = #{domainCaption}
         WHERE domain_id = #{domainId}
     </update>
 

@@ -10,14 +10,14 @@
         <typeAlias type="kr.ac.kopo.vo.Product" alias="Product"/>
         <typeAlias type="kr.ac.kopo.vo.Domain" alias="Domain"/>
         <typeAlias type="kr.ac.kopo.vo.Keywords" alias="Keywords"/>
-        <!--<typeAlias type="kr.ac.kopo.vo.Detail" alias="Detail"/>-->
+        <typeAlias type="kr.ac.kopo.vo.Detail" alias="Detail"/>
     </typeAliases>
 
     <mappers>
         <mapper resource="mybatis/product.xml"/>
         <mapper resource="mybatis/domain.xml"/>
         <mapper resource="mybatis/keywords.xml"/>
-        <!--<mapper resource="mybatis/detail.xml"/>-->
+        <mapper resource="mybatis/detail.xml"/>
     </mappers>
 
 </configuration>

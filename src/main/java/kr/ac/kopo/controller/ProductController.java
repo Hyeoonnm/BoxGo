@@ -1,9 +1,11 @@
 package kr.ac.kopo.controller;
 
+import kr.ac.kopo.pager.KeywordsPager;
 import kr.ac.kopo.pager.Pager;
 import kr.ac.kopo.service.KeywordsService;
 import kr.ac.kopo.service.ProductService;
 import kr.ac.kopo.vo.Keywords;
+import kr.ac.kopo.vo.MobileDetail;
 import kr.ac.kopo.vo.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -34,23 +37,20 @@ public class ProductController {
 
     @GetMapping("/add")
     public String add(Model model) {
-        List<Keywords> detailBrandList = keywordsService.list(2);
-        model.addAttribute("brands", detailBrandList);
 
-        List<Keywords> detailSizeList = keywordsService.list(3);
-        model.addAttribute("sizes", detailSizeList);
+        KeywordsPager pager = new KeywordsPager();
+        pager.setPerPage(0);
 
-        List<Keywords> detailColorList = keywordsService.list(4);
-        model.addAttribute("colors", detailColorList);
+        List<Keywords> list = keywordsService.list(pager);
 
-        List<Keywords> detailCategoryList = keywordsService.list(5);
-        model.addAttribute("categorys", detailCategoryList);
+        model.addAttribute("list", list);
 
         return "product/add";
     }
 
     @PostMapping("/add")
-    public String add(Product product) {
+    public String add(Product product, MobileDetail md) {
+        product.setProductDetail(md);
 
         productService.add(product);
 
